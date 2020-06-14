@@ -1,0 +1,29 @@
+{% extends "load_goods/_base.html" %}
+{% load static %}
+
+{% block title %}Каталог{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="header">
+        <h1><a href="/catalog">Каталог</a></h1>
+    </div>
+    <hr>
+    <div class="sort-block">
+        сортировать по:&nbsp;&nbsp;
+        <a href="/catalog/?sort=name">имени</a>&nbsp;&nbsp;&nbsp;
+        <a href="/catalog/?sort=min_price">начиная с дешёвых</a>&nbsp;&nbsp;&nbsp;
+        <a href="/catalog/?sort=max_price">начиная с дорогих</a>
+    </div>
+    <hr>
+    <div class="content">
+        {% for i in phones %}
+        <div>
+            <a href="/catalog/{{i.slug}}"><h3>{{i.name}}</h3></a>
+            <h6>Стоимость: {{i.price}} &#8381;</h6>
+            <img src="{{i.image}}">
+            <hr>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
